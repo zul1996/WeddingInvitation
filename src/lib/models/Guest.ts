@@ -24,6 +24,10 @@ const GuestSchema = new Schema<IGuest>({
         enum: ["pending", "attending", "not attending"],
         default: "pending",
     },
-});
+}, {
+    timestamps: true,
+    collection: "guests",
+}
+);
 
 export default mongoose.models.Guest || mongoose.model<IGuest>("Guest", GuestSchema);

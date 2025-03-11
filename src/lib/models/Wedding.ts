@@ -18,6 +18,9 @@ const WeddingSchema = new Schema<IWedding>({
         type: String,
         required: true,
     },
-})
+}, {
+    timestamps: true,
+    collection: "weddings",
+});
 
 export default mongoose.models.Wedding || mongoose.model<IWedding>("Wedding", WeddingSchema)

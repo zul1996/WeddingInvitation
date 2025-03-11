@@ -3,8 +3,10 @@ import { IInvitation } from "../interfaces/Invitation";
 
 const InvitationSchema = new Schema<IInvitation>({
     guestName: {
-        type: String,
+        type: Schema.Types.ObjectId,
+        ref: 'Guest',
         required: true,
+        unique: true,
     },
     weddingId: {
         type: Schema.Types.ObjectId,
@@ -16,6 +18,9 @@ const InvitationSchema = new Schema<IInvitation>({
         enum: ["pending", "attending", "not attending"],
         default: "pending",
     },
+},{
+    timestamps: true,
+    collection: "invitations",
 });
 
 export default mongoose.models.Guest || mongoose.model<IInvitation>("Invitation", InvitationSchema)
