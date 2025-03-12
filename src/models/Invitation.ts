@@ -1,6 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 import { IInvitation } from "../interfaces/Invitation";
-import { auditTrailPlugin } from "./Plugins/auditTrailPlugin";
+import { auditTrailPlugin } from "../lib/Plugins/auditTrailPlugin";
 
 const InvitationSchema = new Schema<IInvitation>({
     guestName: {

@@ -1,6 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 import { IWedding } from "../interfaces/Wedding";
-import { auditTrailPlugin } from "./Plugins/auditTrailPlugin";
+import { auditTrailPlugin } from "../lib/Plugins/auditTrailPlugin";
 
 const WeddingSchema = new Schema<IWedding>({
     groomName: {

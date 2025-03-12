@@ -1,7 +1,7 @@
 import mongoose, { Schema, Document } from "mongoose";
 import { IUser } from "../interfaces/User";
 import bcrypt from "bcrypt";
-import { auditTrailPlugin } from "./Plugins/auditTrailPlugin";
+import { auditTrailPlugin } from "../lib/Plugins/auditTrailPlugin";
 
 
 const UserSchema = new Schema<IUser>(
@@ -17,12 +17,9 @@ const UserSchema = new Schema<IUser>(
       default: "user",
     },
     isActive: { type: Boolean, default: true },
-    isEmailVerified: { type: Boolean, default: false },
     accessExpiresAt: { type: Date, required: true },
     lastLogin: Date,
     failedLoginAttempts: { type: Number, default: 0 },
-    passwordResetToken: String,
-    passwordResetExpires: Date,
   },
   {
     collection: "users",
