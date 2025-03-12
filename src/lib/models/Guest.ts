@@ -1,5 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 import { IGuest } from "../interfaces/Guest";
+import { auditTrailPlugin } from "./Plugins/auditTrailPlugin";
 
 const GuestSchema = new Schema<IGuest>({
     name: {
@@ -25,9 +26,12 @@ const GuestSchema = new Schema<IGuest>({
         default: "pending",
     },
 }, {
-    timestamps: true,
     collection: "guests",
 }
 );
 
-export default mongoose.models.Guest || mongoose.model<IGuest>("Guest", GuestSchema);
+GuestSchema.plugin(auditTrailPlugin);
+
+const Guest = mongoose.models.Guest || mongoose.model<IGuest>("Guest", GuestSchema);
+
+export default Guest

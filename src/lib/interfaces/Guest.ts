@@ -7,6 +7,4 @@ export interface IGuest extends Document {
   phone?: string;
   invitationId: mongoose.Types.ObjectId;
   status: "pending" | "attending" | "not attending";
-  createdAt?: Date;
-  updatedAt?: Date;
 }

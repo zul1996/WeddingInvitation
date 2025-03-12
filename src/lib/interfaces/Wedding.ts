@@ -5,6 +5,5 @@ export interface IWedding extends Document {
   brideName: String;
   eventDate: Date;
   eventLocaltion: String;
-  createdAt?: Date;
-  updatedAt?: Date;
+
 }

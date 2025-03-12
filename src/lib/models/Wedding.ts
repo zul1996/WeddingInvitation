@@ -1,5 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 import { IWedding } from "../interfaces/Wedding";
+import { auditTrailPlugin } from "./Plugins/auditTrailPlugin";
 
 const WeddingSchema = new Schema<IWedding>({
     groomName: {
@@ -19,8 +20,9 @@ const WeddingSchema = new Schema<IWedding>({
         required: true,
     },
 }, {
-    timestamps: true,
     collection: "weddings",
 });
+
+WeddingSchema.plugin(auditTrailPlugin);
 
 export default mongoose.models.Wedding || mongoose.model<IWedding>("Wedding", WeddingSchema)
